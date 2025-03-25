@@ -1,0 +1,212 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Math 3320-3}\\Take Home Midterm 1}
+\author{\huge{Tannon Warnick}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\qs{}{
+Let \(X\) be a metric space with metric \(d\). A function \(\bbN \to\) \(X\) is a sequence in \(X\). We denote it as \(\left\{x_{n} ; n \in \bbN\right\}\) where \(x_{n}\) is the value of the sequence at \(n\).
+
+A point \(x_{0}\) in \(X\) is a limit of the sequence \(\left\{x_{n} ; n \in \bbN\right\}\) if for any \(\epsilon>0\) there exists \(n_{0} \in \bbN\) such that \(n \geq n_{0}\) implies \(d\left(x_{n}, x_{0}\right)<\epsilon\).
+
+A sequence is called convergent if it has a limit.\\
+Prove that:\\
+\begin{itemize}
+  \item[(\textit{i})] A convergent sequence \(\left\{x_{n} ; n \in \bbN\right\}\) has only one limit \(x_{0}\). We put \(x_{0}=\lim x_{n}\).\\
+  \item[(\textit{ii})] Let \(A\) be a subset of \(X\). Let \(\bar{A}\) denote its closure in the natural topology of \(X\). Prove that \(\bar{A}\) is the set of all limits of all convergent sequences in \(A\); i.e., \(x \in \bar{A}\) if and only if there exists a convergent sequence \(\left\{x_{n} ; n \in \bbN\right\}\) such that \(x_{n} \in A\) for any \(n \in \bbN\) and \(x=\lim x_{n}\).
+\end{itemize}
+
+}
+\begin{itemize}
+  \item[(\textit{i})]\pf{}{
+  From the given problem we know that there is a limit \(x_0\). Assume for the sake for contradiction that there exists \(x_1\) that is also a limit and \(x_0\neq x_1\). From this, let \[
+  \epsilon = \frac{d(x_1,x_0)}{2}>0.
+  \]
+  The definition of the limit only requires a positive \(\epsilon\) and by assumptions this is. So 
+  \[
+  d(x_0,x_n)<\epsilon , d(x_1,x_n)<\epsilon
+  \]
+  for some \(n_0,n_1\) large enough, let \(N=\max\{n_0,n_1\}\), let \(n>N\),
+By the triangle inequality
+  \[
+  d(x_0,x_1) \leq d(x_0,x_n) + d(x_1,x_n) <2\epsilon =2\cdot \frac{1}{2}d(x_0,x_1)=d(x_0,x_1).
+  \]
+  this is a contradiction because it is not possible that \[
+  d(x_0,x_1)<d(x_0,x_1).
+  \]
+  So, \(x_1\) must be equal to \(x_0\) and since they were chosen arbitrarily, this proves that there only exists one limit to a convergent sequence, and \(\lim x_n=x_0\).
+  }
+  \item[(\textit{ii})]\pf{}{\(
+\implies
+  \)
+  Let \(x \in \bar{A}\setminus A\) be a limit of a sequence 
+  \(x_n\)with \(x_n\in A\) for all \(n\) and \(x_n\to x\).
+
+By definition of convergence, for every open set \(U\) containing \(x\), there exists some \(N\in \bbN\) such that for all \(n\geq N\), \(x_n\in  U\). Since each \(x_n\) is in \(A\), it follows that every open set containing \(x\) intersects \(A\). Thus, 
+  \(x\) is in the closure \(\bar{A}\), meaning:
+  \[
+  \{x\in X\mid \exists x_n\in A \text{ such that } x_n\to x\}\subseteq \bar{A}
+  \]
+  \(\impliedby\)
+  Take some point \(x\in \bar{A}\). We now define \(U_n\) to be some open ball centered at \(x\) and of radius \(\frac{1}{n}\) we can now construct a sequence \(x_n\) where \(x_1\in A\cap U_1, \ldots x_n\in A\cap U_n\) we know that \(A\cap U_n\) is nonempty for all \(n\) by construction. 
+
+  By construction \(x_n\in A\) and we can look at how this converges, \[d(x_n,x)<\frac{1}{n}\]
+  since \(\frac{1}{n}\to 0\) \(x_n\to x\) this proves that 
+  \[
+  \bar{A}\subseteq\{x\in X\mid \exists x_n\in A \text{ such that } x_n\to x\}
+  \]
+  which proves that \[
+  \bar{A}=\{x\in X\mid \exists x_n\in A \text{ such that } x_n\to x\}
+  \]
+  } 
+
+
+\end{itemize}
+\qs{}{
+Let \( f \) be a continuous map from a topological space \( X \) into a topological space \( Y \). Let \( A \) be a subset of \( X \). Show that
+
+\[
+f(\bar{A}) \subset \overline{f(A)}.
+\]
+
+Also, show by example of a function from \( \mathbb{R} \) into \( \mathbb{R} \), that \( f(\bar{A}) \) can be a proper subset of \( \overline{f(A)} \).
+
+}
+\pf{}{
+    Let \( f: X \mapsto Y \) be a continuous map and \( A \subset X \).
+
+    Since \( f \) is continuous, for some \( U \in Y \) open, \( f^{-1}(U) \) is open in \( X \).
+
+    Let \( Z \) be closed in \( Y \); then \( Y \setminus Z \) is open. 
+    \begin{align*}
+      f^{-1}(Y \setminus Z) &= \{ x \in X \mid f(x) \in Y \setminus Z \} \\
+                             &= \{ x \in X \mid f(x) \notin Z \} \\
+                             &= X \setminus \{ y \in X \mid f(y) \in Z \} \\
+                             &= X \setminus f^{-1}(Z).
+    \end{align*}
+    We know that \( f^{-1}(Z) \) is closed in \( X \), since \( Z \) is closed in \( Y \). By the same argument, we look at \( \overline{f(A)} \). \( f^{-1}(\overline{f(A)}) \) is closed. Since \( A \subset f^{-1}(\overline{f(A)}) \), we have \( \bar{A} \subset f^{-1}(\overline{f(A)}) \) by definition, since \( \bar{A} \) is the smallest closed set containing \( A \).
+
+    By simply applying \( f \) to both sides, we get:
+
+    \[
+      f(\bar{A}) \subset \overline{f(A)}.
+    \]
+}
+Take, for example, the function \( \frac{1}{1+x^2} \) on the domain \( A = (0, \infty) \), which can be closed; \( \bar{A} = [0, \infty) \).
+
+Looking at this graph in \figref{1}, you can clearly see that:
+
+\[
+f(A) = (0, 1),
+\]
+\[
+f(\bar{A}) = (0, 1],
+\]
+and
+\[
+\overline{f(A)} = [0, 1].
+\]
+
+This is an example of a function \( f: \mathbb{R} \to \mathbb{R} \) where \( f(\bar{A}) \subsetneq \overline{f(A)} \).
+\begin{figure}[b]\centering
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines=middle,
+    xlabel={$x$},
+    ylabel={$f(x)$},
+    xmin=0, xmax=6,
+    ymin=-.5, ymax=1.5,
+    domain=0:4,  % Match domain to xmin and xmax
+    samples=100,
+    enlargelimits
+]
+    % Plotting the smooth function as an example
+    \addplot[
+        domain=0:6, 
+        samples=100,
+        thick
+    ] {1/(1+x^2)};
+\end{axis}
+\end{tikzpicture}
+\caption{Graph of the function $f(x) = \frac{1}{1+x^2}$}
+\figlabel{1}  % Assuming figlabel is properly defined
+\end{figure}
+
+
+\qs{}{
+Let \(X\) be a hausdorff topological space and \(K_{1} \supset K_{2} \supset\) \(\cdots \supset K_{n} \supset \cdots\) a decreasing sequence of compact subsets of \(X\). Let \(U\) be an open set in \(X\). If \(\bigcap_{n=1}^{\infty} K_{n} \subset U\), show that there exists \(n_{0}\) such that \(K_{n} \subset U\) for \(n \geq n_{0}\).
+}
+\pf{}{
+For each \( n \), define:  
+\[
+V_n = (X\setminus K_n) \cup U.
+\]
+
+Each \( V_n \) is open because \( X\setminus K_n \) is open, \( U \) is open, and a finite union of open sets is open. Consider the union:  
+\[
+\bigcup_{n=1}^\infty V_n = \left(X\setminus \bigcap_{n=1}^\infty K_n\right) \cup U.
+\]
+This forms an open cover of \( X \), which also implies that it is an open cover of \( K_1 \). Since \( \bigcap_{n=1}^{\infty} K_n \subset U \), we conclude that  
+\[
+K_1 \subset \bigcup_{n=1}^\infty V_n.
+\]
+
+Since we are in a Hausdorff space and \( K_1 \) is closed, it is also compact. By compactness, there exists a finite subcover  
+\[
+\{V_{n_1},\ldots, V_{n_m}\}.
+\]
+
+Since  
+\[
+K_n \supset K_{n+1} \implies V_n \subset V_{n+1},
+\]
+there exists a largest index in this finite subcover, say \( n_0 = \max(n_1,\ldots,n_m) \), such that  
+\[
+K_1 \subset V_{n_0}.
+\]
+Expanding \( V_{n_0} \), we obtain  
+\[
+K_1 \subset (X\setminus K_{n_0}) \cup U.
+\]
+Since \( K_{n_0} \subset K_1 \), it follows that  
+\[
+K_{n_0} \subset U.
+\]
+
+Finally, since \( K_n \) is a decreasing sequence, for all \( n \geq n_0 \), we have \( K_n \subset U \).}
+\newpage
+
+
+\qs{}{
+Let \(f\) be a continuous real function on \([0,1]\) such that
+
+\[
+\int_{0}^{1} f(x) x^{n} \, dx = 0
+\]
+for all integers \(n \geq 0\). Show that \(f = 0\).
+}
+
+We will use Weierstrass's theorem for approximating \(f(x)\). By the theorem, there exists some polynomial \(P(x)\) such that for any \(\epsilon > 0\), \(\left| f(x) - P(x) \right| < \epsilon\) for all \(x \in [0,1]\). Take a sequence of polynomials \(P_k(x)\) that converge uniformly to \(f\), and consider the integral of \(f^2\):
+
+\begin{align*}
+  \int_0^1 f^2(x) \, dx
+  &= \lim_{k \to \infty} \int_0^1 f(x) P_k(x) \, dx \\
+  &= \lim_{k \to \infty} \int_0^1 f(x) \sum_{n=0}^k a_n x^n \, dx \\
+  &= \lim_{k \to \infty} \sum_{n=0}^k a_n \int_0^1 f(x) x^n \, dx
+\end{align*}
+
+From the given assumption that \(\int_{0}^{1} f(x) x^{n} \, dx = 0\), we get
+
+\[
+\int_0^1 f^2(x) \, dx = 0.
+\]
+
+Since \(f^2(x)\) is nonnegative, we conclude that \(f \equiv 0\).
+\end{document}

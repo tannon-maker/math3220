@@ -1,0 +1,375 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Math 3220-3}\\Take Home Midterm 2}
+\author{\huge{Tannon Warnick}}
+\date{\today}
+
+\begin{document}
+\maketitle
+\qs{}{
+\begin{itemize}
+  \item[(i)] Let \(V\) be a vector space with inner product \((\cdot \mid \cdot)\).\\
+Let
+
+\[
+\|v\|=\sqrt{(v \mid v)}
+\]
+
+be the corresponding norm. Show that
+
+\[
+\|u+v\|^{2}+\|u-v\|^{2}=2\left(\|u\|^{2}+\|v\|^{2}\right)
+\]
+
+for any \(u, v \in V\).\\
+\item[(ii)] Consider the normed vector space \(\mathcal{C}([0,1])\) of continuous real functions on \([0,1]\) with norm \(\|f\|=\max _{x \in[0,1]}|f(x)|\). Using (i), show that there is no inner product on \(\mathcal{C}([0,1])\) which defines this norm.
+\end{itemize}
+}
+\begin{itemize}
+  \item[(i)] \pf{of i}{ In any vector space \(V\), the inner product is linear in the first term and anti-linear in the second. We have:
+
+\[
+\|u+v\|^{2}+\|u-v\|^{2}=
+(u + v \mid u+v) + 
+(u - v \mid u-v)
+\]
+
+Using the fact above:
+
+\[
+(u + v \mid u+v) =
+(u \mid u) + 
+(u \mid v) + 
+(v \mid u) + 
+(v \mid v)
+\]
+
+\[
+(u - v \mid u-v) = 
+(u \mid u) - 
+(u \mid v) - 
+(v \mid u) + 
+(v \mid v)
+\]
+
+\[
+\implies\|u+v\|^{2}+\|u-v\|^{2}
+  =(u \mid u) + 
+(u \mid v) + 
+(v \mid u) + 
+(v \mid v) +(u \mid u) - 
+(u \mid v) - 
+(v \mid u) + 
+(v \mid v)
+\]
+
+\[
+  = 2(u \mid u) + 
+  2(v \mid v) = 2\left(\|u\|^2 + \|v\|^2\right)
+\]
+
+\[
+\implies
+\|u+v\|^{2}+\|u-v\|^{2}=2\left(\|u\|^{2} + \|v\|^{2}\right)
+\]
+}
+  \pf{of ii}{ 
+The space \( \mathcal{C}([0,1]) \) consists of all continuous real-valued functions on \( [0,1] \), equipped with the norm \(\|f\|=\max_{x \in [0,1]} |f(x)|\):
+
+\[
+\| f \| = \max_{x \in [0,1]} | f(x) |.
+\]
+
+Suppose, for contradiction, that there exists an inner product \( (\cdot \mid \cdot) \) on \( \mathcal{C}([0,1]) \) such that
+
+\[
+\| f \|^2 = (f \mid f).
+\]
+
+From part \((i)\), this inner product must satisfy:
+
+\[
+\| f + g \|^2 + \| f - g \|^2 = 2 \| f \|^2 + 2 \| g \|^2.
+\]
+
+However, for the norm,
+
+\[
+\| f + g \| = \max_{x \in [0,1]} | f(x) + g(x) |,
+\]
+
+and
+
+\[
+\| f - g \| = \max_{x \in [0,1]} | f(x) - g(x) |.
+\]
+
+It is not generally true that:
+
+\[
+\max_{x \in [0,1]} | f(x) + g(x) |^2 + \max_{x \in [0,1]} | f(x) - g(x) |^2 = 2 \max_{x \in [0,1]} | f(x) |^2 + 2 \max_{x \in [0,1]} | g(x) |^2.
+\]
+
+A counterexample is given by choosing:
+
+\[
+f(x) = x, \quad g(x) = 1 - x.
+\]
+
+Then,
+
+\[
+\| f \| = 1, \quad \| g \| = 1,
+\]
+
+looking at their sum and difference:
+
+\[
+\| f + g \| = 1, \quad \| f - g \| = 1.
+\]
+
+Thus,
+
+\[
+\| f + g \|^2 + \| f - g \|^2 = 1^2 + 1^2 = 2.
+\]
+
+However,
+
+\[
+2 \| f \|^2 + 2 \| g \|^2 = 2(1^2) + 2(1^2) = 4.
+\]
+
+This is a contradiction because \(2 \neq 4\), so there is no inner product that can define this norm.
+}
+\end{itemize}
+\qs{}{
+Let \(V\) be a complex vector space with inner product. Let \(u, v \in V, u \neq 0\) and \(v \neq 0\). Show that the following two statements are equivalent:\\
+\begin{itemize}
+  \item[(i)] the vectors \(u\) and \(v\) are proportional;\\
+  \item[(ii)] 
+
+\[
+|(u \mid v)|=\|u\| \cdot\|v\|
+\]
+\end{itemize}
+}
+\pf{}{
+\(\implies\) If \(u\) and \(v\) are proportional, then there exists some scalar \(k \in \mathbb{C}\) such that \(u = k v\). Taking the inner product,
+
+\[
+|(u \mid v)| = |(k v \mid v)| = |k| |(v \mid v)| = |k| \|v\|^2 = \|k v\| \cdot \|v\| = \|u\| \cdot \|v\|.
+\]
+
+\(\impliedby\) Suppose \(|(u \mid v)| = \|u\| \cdot \|v\|\). Consider the projection of \(u\) onto \(v\) in their respective Cartesian and polar forms, where \(\theta\) is the angle between them:
+
+\[
+\proj_v(u) = \frac{(u \mid v)}{\|v\|^2}v = \frac{|(u \mid v)| e^{i\theta}}{\|v\|^2}v
+\]
+
+From our given assumption \(|(u \mid v)| = \|u\| \cdot \|v\|\), we can rewrite that as
+
+\[
+\proj_v(u) = \frac{|(u \mid v)| e^{i\theta}}{\|v\|^2}v = \frac{\|u\|e^{i\theta}}{\|v\|} v.
+\]
+
+By definition, the projection of \( u \) onto \( v \) represents the component of \( u \) that lies along \( v \). If \( \proj_v(u) = u \), then \( u \) must be entirely in the span of \( v \), meaning that there exists some scalar \( k \in \mathbb{C} \) such that  
+
+\[
+u = k v.
+\]
+
+Now we must prove that indeed \(\proj_v(u) = u\). If \(\|\proj_v(u)\| \neq \|u\|\), then \(u\) has an orthogonal component to \(v\), meaning \(u\) is not a scalar multiple of \(v\). But if 
+\(\|\proj_v(u)\| = \|u\|\), then \(u\) must lie entirely in the span of \(v\), and thus
+\(u = kv\) for some scalar 
+\(k\). Looking at the magnitude of \(\proj_v(u)\):
+
+\[
+\|\proj_v(u)\|= \frac{\|u\||e^{i\theta}|}{\|v\|}\|v\| = \|u\||e^{i\theta}| = \|u\|.
+\]
+
+So it is proven.
+}
+\qs{}{
+Let \(\mathcal{C}\left(S^{1}\right)\) be the algebra of complex continuous functions on the unit circle \(S^{1}=\{z \in \mathbb{C} \mid |z|=1\}\) in the complex plane. Consider the subalgebra \(\mathcal{A}\) of all functions
+
+\[
+f\left(e^{i \phi}\right)=\sum_{n=0}^{N} c_{n} e^{i n \phi}
+\]
+
+for real \(\phi\). Then \(\mathcal{A}\) separates points on \(S^{1}\) and vanishes at no point of \(S^{1}\). Show that \(\mathcal{A}\) is not dense in \(\mathcal{C}\left(S^{1}\right)\). (Hint: Show that \(e^{-i \phi}\) is not in the closure of \(\mathcal{A}\).)
+}
+\pf{}{
+In order for an algebra to be dense in some space, it must fulfill the requirements of the Stone-Weierstrass theorem. In this complex space, they are:
+
+\begin{itemize}
+  \item[(1)] \(\mathcal{A}\) separates all points.
+  \item[(2)] \(\mathcal{A}\) contains constant functions.
+  \item[(3)] \(\mathcal{A}\) is closed under complex conjugation.
+\end{itemize} 
+
+Consider the inner product \( (\cdot \mid \cdot) \) on \( \mathcal{C}(S^1) \):
+
+\[
+(f \mid g) = \int_{0}^{2\pi} f(e^{i\phi}) \overline{g(e^{i\phi})} \, d\phi.
+\]
+
+The Fourier basis functions satisfy the orthogonality relation:
+
+\[
+\int_{0}^{2\pi} e^{i n \phi} e^{-i m \phi} \, d\phi = 
+\begin{cases}
+  2\pi, & \text{if } m = n, \\
+  0, & \text{if } m \neq n.
+\end{cases}
+\]
+
+Suppose, for contradiction of (3), that \( e^{-i\phi} \) were in the closure of \( \mathcal{A} \). Then there would exist a sequence \( f_N \in \mathcal{A} \) such that
+
+\[
+(f_N \mid e^{-i\phi}) \to (e^{-i\phi} \mid e^{-i\phi}) = \int_{0}^{2\pi} e^{-i\phi} e^{i\phi} \, d\phi = 2\pi.
+\]
+
+However, since every function in \( \mathcal{A} \) consists only of nonnegative Fourier terms, the inner product \( (f_N \mid e^{-i\phi}) \) always vanishes. Expanding the inner product:
+
+\[
+(f_N \mid e^{-i\phi}) = \int_{0}^{2\pi} \left( \sum_{n=0}^{N} c_n e^{i n \phi} \right) e^{i\phi} \, d\phi.
+\]
+
+By linearity of integration, we can swap the sum and the integral:
+
+\[
+\sum_{n=0}^{N} c_n \int_{0}^{2\pi} e^{i (n+1) \phi} \, d\phi.
+\]
+
+Using the fundamental integral property of exponentials:
+
+\[
+\int_0^{2\pi} e^{i (n+1) \phi} \, d\phi = \left[ \frac{e^{i (n+1) \phi}}{i(n+1)} \right]_0^{2\pi} = 0, \quad \text{for all } n \geq 0.
+\]
+
+Thus, every term in the sum evaluates to zero, implying that
+
+\[
+(f_N \mid e^{-i\phi}) = 0 \quad \text{for all } f_N \in \mathcal{A}.
+\]
+
+Since for all \(f_N \in \mathcal{A}\), the inner product \((f_N \mid e^{-i\phi})\) vanishes, it does not fulfill (3). Therefore, by the Stone-Weierstrass theorem, \(\mathcal{A}\) is not dense. 
+}
+
+\qs{}{
+Let \(f\) be a continuous function on \(\mathbb{R}\) periodic with period \(2 \pi\), given by \(f(x)=|x|\) for \(-\pi \leq x \leq \pi\). Using Bessel's equality for its Fourier coefficients, prove that
+
+\[
+\sum_{n=0}^{\infty} \frac{1}{(2 n+1)^{4}}=\frac{\pi^{4}}{96}
+\]
+}
+\pf{}{
+The function \(f(x) = |x|\) is an \textit{even} function, so its Fourier series will look like: 
+
+\[
+\frac{a_0}{2} + \sum_{n=1}^\infty a_n \cos(nx)
+\]
+
+The coefficients will be:
+
+\[
+a_n = \frac{1}{\pi} \int_{-\pi}^\pi |x| \cos(nx) \, dx = \frac{2}{\pi} \int_0^\pi x \cos(nx) \, dx 
+\]
+
+We must use integration by parts to solve this integral:
+
+Let
+
+\[
+\begin{matrix}
+  u = x & du = dx \\
+  dv = \cos(nx) & v = \frac{\sin(nx)}{n}
+\end{matrix}
+\]
+
+Using this substitution, we get:
+
+\[
+\frac{2}{\pi} \int x \cos(nx) \, dx = \frac{2}{\pi} \left[ \frac{x \sin(nx)}{n} - \int \frac{\sin(nx)}{n} \, dx \right]
+\]
+
+This simplifies to:
+
+\[
+\frac{2}{\pi} \left[ \frac{x \sin(nx)}{n} + \frac{\cos(nx)}{n^2} \right]
+\]
+
+Evaluating at the bounds:
+
+\[
+\frac{2}{\pi} \int_0^\pi x \cos(nx) \, dx = \frac{2}{\pi} \left[ \frac{\pi \sin(n\pi)}{n} + \frac{\cos(n\pi) - 1}{n^2} \right] =  \frac{2}{\pi} \cdot \frac{\cos(n\pi) - 1}{n^2}
+\]
+
+Thus, the Fourier coefficients are:
+
+\[
+a_n = \frac{2}{\pi} \cdot \frac{(-1)^n - 1}{n^2}
+\]
+
+For \textit{odd} \(n\):
+
+\[
+a_{2m+1} = -\frac{4}{\pi n^2}
+\]
+
+For \textit{even} \(n\):
+
+\[
+a_{2m} = 0
+\]
+
+So only the odd coefficients contribute in the sum.
+
+Applying Bessel's equality:
+
+\[
+\frac{1}{\pi} \int_{-\pi}^\pi |x|^2 \, dx = \frac{a_0^2}{2} + \sum_{n=1}^\infty a_n^2
+\]
+
+Computing the left side:
+
+\[
+\frac{2}{\pi} \int_0^\pi x^2 \, dx = \frac{2}{\pi} \left[ \frac{x^3}{3} \right]^\pi_0 = \frac{2\pi^2}{3}
+\]
+
+Computing the right side:
+
+\[
+\frac{a_0^2}{2} + \sum_{n=1}^\infty a_n^2 = \frac{a_0^2}{2} + \sum_{m=1}^\infty \left( \frac{-4}{\pi (2m+1)^2} \right)^2 = \frac{a_0^2}{2} + \frac{16}{\pi^2} \sum_{m=0}^\infty \frac{1}{(2m+1)^4}
+\]
+
+Using our first integral to find \(a_0\):
+
+\[
+a_0 = \frac{2}{\pi} \int_0^\pi x \cos(0 \cdot x) \, dx = \frac{\pi^2}{2} \cdot \frac{2}{\pi} = \pi
+\]
+
+Equating the sides and solving for the sum:
+
+\[
+\frac{2\pi^2}{3} = \frac{\pi^2}{2} + \frac{16}{\pi^2} \sum_{m=0}^\infty \frac{1}{(2m+1)^4}
+\]
+
+Subtracting \(\frac{\pi^2}{2}\):
+
+\[
+\frac{\pi^2}{6} = \frac{16}{\pi^2} \sum_{m=0}^\infty \frac{1}{(2m+1)^4}
+\]
+
+Multiplying by \(\frac{\pi^2}{16}\):
+
+\[
+\sum_{m=0}^\infty \frac{1}{(2m+1)^4} = \frac{\pi^4}{96}
+\]
+}
+\end{document}
