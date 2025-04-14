@@ -1,0 +1,123 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Math 2280}\\Problem Set 8}
+\author{\huge{Tannon Warnick}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\qs{}{
+Let \(f\) be a function on \(\bbR^2\) defined by \[f(x,y)= 
+\begin{cases}
+  0 &\text{ if } (x,y)=(0,0)\\
+  \frac{xy}{x^2+y^2} &\text{ if } (x,y)\neq(0,0)\\
+\end{cases}
+\]
+Prove that \begin{itemize}
+  \item[\((i)\)] \(f\) is not continuous at \((0,0)\);
+  \item[\((ii)\)] The first partial derivatives of f exist at every point of \(\bbR^2\). Is \(f\) differentiable at \((0,0)\)? Explain your answer!
+\end{itemize}
+}
+\begin{itemize}
+  \item[\((i)\)]Looking at the limit of \(f\) from different paths we find:
+
+Let \(x=0\)
+\[
+f(0,y) = \frac{0}{y^2} =0 \implies \lim_{(x,y)\to(0,0)}f(x,y) = 0
+\]
+
+Let \(x=y\)
+\[
+ f(x,x) = \frac{x^2}{2x^2}= \frac{1}{2}\implies \lim_{(x,y)\to(0,0)}f(x,y) = \frac{1}{2}
+\]
+
+The limits are different on these paths so the limit does not exist so \(f\) is not continuous at (0,0) even though it is well defined. 
+
+\item[\((ii)\)]
+
+  Taking partial derivatives of \(f\) we get:
+
+  \[
+  \del{f}{y} = \frac{x^3-y^2x}{x^4+2x^2y^2+y^4}
+  \]
+  \[
+  \del{f}{x} = \frac{y^3-x^2y}{x^4+2x^2y^2+y^4}
+  \]
+
+  These are functions that are defined for all \(x^2+y^2>0\) and at \(x^2+y^2 = 0\) the derivatives are 0 because of the inputted point at (0,0), so they are defined on \(\bbR^2\).
+  Looking at continuity of the partials we get that 
+
+  for \(x=0\)
+  \[
+  \del{f}{x}(0,y) = \frac{y^3}{y^4} = \frac{1}{y}\]
+  \[\implies \lim_{(x,y)\to(0,0)^+}f(x,y) = +\infty\quad\lim_{(x,y)\to(0,0)^-}f(x,y) = -\infty
+  \]
+  The same is for \(y=0\) on the other partial. This tells us that \(\partial f\) is not continuous. So \(f\) is not differentiable at that discontinuous point (i.e. (0,0)). 
+\end{itemize}
+\qs{}{
+If \(F\) is a differentiable real function defined in a convex open set \(U \subset \mathbb{R}^{n}\), such that \(\partial_{1} F(x)=0\) for every \(x \in U\), prove that \(F\) depends only on \(x_{2}, \ldots, x_{n}\).\\
+}
+
+We first define \[
+\gamma(t) = (t,x_2,\ldots,x_n), \text{ for } t\in I
+\]
+
+Where \(I\subset \bbR\) such that \(\gamma(t)\in U\, \forall t\in I\), \(I\) is a connected interval since \(U\) is convex 
+
+We now look at \[h(t) = f(\gamma(t))\] \(h(t)\) is a differentiable function from \(I\to\bbR\). How we have constructed \(h\) lets us know that \(h'(t)=0\) because \(\partial_1F=0\). Thus \(h(t)\) is constant for all \(t\in I\). Thus there exists \(G\) such that: \[
+F(x_1,x_2,\ldots,x_n) = G(x_2,\ldots,x_n)
+\]
+\qs{}{
+
+Let \(F: \mathbb{R}^{2} \longrightarrow \mathbb{R}^{2}\) be a map given by \(F=\left(F_{1}, F_{2}\right)\) where
+
+\[
+F_{1}(x, y)=e^{x} \cos (y) \quad \text { and } \quad F_{2}(x, y)=e^{x} \sin (y)
+\]
+
+for any \((x, y) \in \mathbb{R}^{2}\). Then:
+\begin{itemize}
+  \item[\((i)\)] Find the image of \(F\).\\
+  \item[\((ii)\) ]Calculate the derivative \(F^{\prime}(x, y)\) and show that it is invertible at any point in \(\mathbb{R}^{2}\).\\
+\end{itemize}
+Thus, by the inverse function theorem, \(F\) is locally invertible, i.e., for any \((x, y) \in \mathbb{R}^{2}\) there are open neighborhoods \(U\) of \((x, y)\) and \(V\) of \(F(x, y)\) such that \(F: U \longrightarrow V\) is a bijection.
+
+Show that \(F\) is not a bijection globally, i.e, \(F\) is not a bijection of \(\mathbb{R}^{2}\) onto the image of \(F\).
+}
+\qs{}{
+
+Let \(f\) be a function on \(\mathbb{R}\) defined by
+
+\[
+f(x)=x+2 x^{2} \sin \left(\frac{1}{x}\right)
+\]
+
+for \(x \neq 0\) and \(f(0)=0\). Show that
+\begin{itemize}
+  \item[\((i)\)] \(f\) is continuous on \(\mathbb{R}\);
+  \item[\((ii)\)] \(f\) is differentiable on \(\mathbb{R}\);
+  \item[\((iii)\)] the derivative \(f^{\prime}\) is not continuous at 0 ;
+  \item[\((iv)\)] \(f^{\prime}(0)=1\);
+  \item[\((v)\)] for any \(\epsilon>0\), the restriction of \(f\) to \((-\epsilon, \epsilon)\) is not injective.
+
+\end{itemize}
+This shows that, even for \(n=1\), the conclusions of inverse function theorem do not hold if \(f^{\prime}\) is not continuous.
+\nt{
+Hint: To prove (v), first show that a continuous function \(f\) cannot be injective in neighborhoods of local maxima and minima.
+
+These must be critical points of \(f\), i.e. zeros of \(f^{\prime}\).\\
+Then show that for every \(\epsilon>0\) the interval \((-\epsilon, \epsilon)\) contains infinitely many critical points of \(f\).
+
+A critical point \(x\) of \(f\) is a maximum or minimum if \(f^{\prime \prime}(x) \neq 0\).\\
+Therefore, it is enough to show that there is an \(\epsilon>0\) such that there are no \(x \in(-\epsilon, \epsilon)\) such that \(f^{\prime}(x)=0\) and \(f^{\prime \prime}(x)=0\).
+
+To prove this observe that the derivatives \(f^{\prime}\) and \(f^{\prime \prime}\) are linear functions in \(A=\sin \left(\frac{1}{x}\right)\) and \(B=\cos \left(\frac{1}{x}\right)\) with coefficients which are rational functions in \(x\). Therefore, the equations \(f^{\prime}(x)=0\) and \(f^{\prime \prime}(x)=0\) are a linear system of two equations for \(A\) and \(B\) with rational function coefficients.
+
+Explicitly solve this system for \(A\) and \(B\). Then calculate \(A^{2}+B^{2}\). From the result you should see that for small \(x\) this expression cannot be 1 , contradicting the choice of \(A\) and \(B\). Therefore, for small \(x, f^{\prime}\) and \(f^{\prime \prime}\) cannot simultaneously vanish at \(x\).
+}}
+\end{document}
